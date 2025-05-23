@@ -1,42 +1,56 @@
-
 # Flutter PayPal Payment Plus Package
 
-The **Flutter PayPal Payment Plus Package** provides an easy-to-integrate solution for enabling PayPal payments in your Flutter mobile application. This package allows for a seamless checkout experience with both sandbox and production environments.
+The **Flutter PayPal Payment Plus Package** offers a seamless and straightforward integration of PayPal Checkout into your Flutter mobile applications. Whether you're developing for sandbox testing or live production, this package enables a smooth and customizable checkout experience.
 
-## Features
+---
 
-- **Seamless PayPal Integration**: Easily integrate PayPal payments into your Flutter app.
-- **Sandbox Mode Support**: Test payments in a safe sandbox environment before going live.
-- **Customizable Transactions**: Define custom transaction details for each payment.
-- **Payment Outcome Callbacks**: Handle success, error, and cancellation events for payments.
+## 📦 Features
 
-## Installation
+- ✅ **Seamless PayPal Integration**: Simplified integration for PayPal payments within Flutter apps.
+- 🧪 **Sandbox Mode Support**: Easily toggle between sandbox and production environments.
+- 💳 **Customizable Transactions**: Define full transaction details including items, amounts, and descriptions.
+- 🔄 **Payment Callbacks**: Respond to success, error, or cancellation using intuitive callback handlers.
 
-To install the Flutter PayPal Payment Package, follow these steps
+---
 
-1. Add the package to your project's dependencies in the `pubspec.yaml` file:
-   ```yaml
-   dependencies:
-     flutter_paypal_payment_plus: ^1.0.1
-    ``` 
-2. Run the following command to fetch the package:
+## 🚀 Installation
 
-    ``` 
-    flutter pub get
-    ``` 
+To get started, follow these steps:
 
-## Usage
-1. Import the package into your Dart file:
+### 1. Add the dependency:
 
-    ``` 
-    import 'package:flutter_paypal_payment_plus/flutter_paypal_payment_plus.dart';
-    ```
-2. Navigate to the PayPal checkout view with the desired configuration:
+In your `pubspec.yaml` file:
+
+```yaml
+dependencies:
+  flutter_paypal_payment_plus: ^1.0.1
+```
+
+### 2. Fetch the package:
+
+```bash
+flutter pub get
+```
+
+---
+
+## 🛠️ Usage
+
+### 1. Import the package
+
 ```dart
-/// Entry point of the application.
+import 'package:flutter_paypal_payment_plus/flutter_paypal_payment_plus.dart';
+```
+
+### 2. Use `PaypalCheckoutView` to initiate a payment:
+
+Below is a complete example:
+
+```dart
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_paypal_payment_plus/flutter_paypal_payment_plus.dart';
+
 void main() {
   runApp(const PaypalPaymentDemo());
 }
@@ -53,28 +67,15 @@ class PaypalPaymentDemo extends StatelessWidget {
         body: Center(
           child: TextButton(
             child: const Text('Pay with PayPal'),
-
-            /// When pressed, navigates to the [PaypalCheckoutView] screen to initiate a PayPal payment.
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (BuildContext context) => PaypalCheckoutView(
-                    /// Indicates whether the PayPal sandbox (test) environment should be used.
                     sandboxMode: true,
-
-                    /// Your PayPal REST API Client ID.
                     clientId: "YOUR_CLIENT_ID",
-
-                    /// Your PayPal REST API Secret Key.
                     secretKey: "YOUR_SECRET_KEY",
-
-                    /// The URL to redirect to upon successful payment completion.
                     returnURL: "YOUR_RETURN_URL",
-
-                    /// The URL to redirect to if the user cancels the payment.
                     cancelURL: "YOUR_CANCEL_URL",
-
-                    /// Transaction details including the list of items and total payment amount.
                     transactions: const TransactionOption(
                       payPalAmount: PayPalAmount(
                         total: "100",
@@ -103,26 +104,15 @@ class PaypalPaymentDemo extends StatelessWidget {
                         ],
                       ),
                     ),
-
-                    /// Optional note or message shown to the user about the payment.
                     note: "Contact us for any questions on your order.",
-
-                    /// Callback triggered when the payment completes successfully.
-                    /// Logs the result and navigates back to the previous screen.
                     onSuccess: (PaymentSuccessModel model) async {
                       log("onSuccess: ${model.toJson()}");
                       Navigator.pop(context);
                     },
-
-                    /// Callback triggered when an error occurs during the payment process.
-                    /// Logs the error and navigates back to the previous screen.
                     onError: (error) {
                       log("onError: $error");
                       Navigator.pop(context);
                     },
-
-                    /// Callback triggered when the user cancels the PayPal payment.
-                    /// Prints a log and returns to the previous screen.
                     onCancel: () {
                       print('Cancelled');
                       Navigator.pop(context);
@@ -137,5 +127,26 @@ class PaypalPaymentDemo extends StatelessWidget {
     );
   }
 }
+```
 
-``` 
+---
+
+## 📘 Notes
+
+- To obtain `clientId` and `secretKey`, register your app at [PayPal Developer Dashboard](https://developer.paypal.com/).
+- This package is built on top of the WebView-based implementation of PayPal's Smart Payment Buttons.
+
+---
+
+## 📄 License
+
+This package is open-source and available under the [MIT License](LICENSE).
+
+---
+
+## 🤝 Contributions
+
+Contributions, suggestions, and pull requests are welcome!  
+Feel free to [open an issue](https://github.com/YaseenHussein/flutter_paypal_payment_plus/issues) if you find bugs or want new features.
+
+---
