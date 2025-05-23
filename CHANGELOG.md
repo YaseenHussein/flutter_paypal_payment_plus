@@ -1,3 +1,19 @@
-## 1.0.8
+# Changelog
 
-This package simplifies integrating PayPal payments into your mobile app. Key features include seamless in-app PayPal integration, user-friendly payment flow, secure transaction handling, customizable UI components, and real-time payment status updates. Future enhancements include additional payment options, enhanced fraud protection, international payment support, subscription and recurring payments, and improved analytics and reporting.
+## [1.0.1] - 2025-05-23
+
+### Added
+- Simplified integration of PayPal payments within mobile applications.
+- User-friendly in-app payment flow.
+- Customizable UI components for better user experience.
+- Real-time updates on payment status.
+
+### Fixed
+- Improved secure transaction handling.
+
+### Planned
+- Additional payment options.
+- Enhanced fraud protection.
+- Support for international payments.
+- Subscription and recurring payments support.
+- Improved analytics and reporting features.
