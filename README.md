@@ -29,7 +29,7 @@ dependencies:
 ### 2. Fetch the package:
 
 ```bash
-flutter pub get
+flutter pub get flutter_paypal_payment_plus
 ```
 
 ---
